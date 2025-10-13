@@ -1,0 +1,146 @@
+/* --- 1. GLOBAL & FONT STYLES (Warm & Friendly Base) --- */
+:root {
+    --color-primary: #8B4513; /* Saddle Brown - Coffee color */
+    --color-secondary: #D2B48C; /* Tan - Creamy/latte color */
+    --color-background: #F5F5DC; /* Beige - Off-white paper look */
+    --color-success: #28a745; /* Dark Green - Clear Success */
+    --color-danger: #dc3545; /* Red - Clear Alert */
+    --color-text: #333;
+    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Readable font */
+    background-color: var(--color-background);
+    color: var(--color-text);
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+/* --- 2. LAYOUT (Clean and Organized) --- */
+#app-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-light);
+}
+
+#calculator-section, #results-section {
+    flex: 1; 
+    min-width: 350px;
+}
+
+h2 {
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+/* --- 3. FORM STYLES (User-Friendly Inputs) --- */
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: var(--color-primary);
+    font-weight: bold;
+    padding: 0 10px;
+    font-size: 1.1em;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+.input-group:last-child {
+    border-bottom: none;
+}
+
+label {
+    flex-basis: 75%;
+    font-weight: 500;
+}
+
+input[type="number"] {
+    flex-basis: 20%;
+    padding: 8px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 4px;
+    text-align: right;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+/* --- 4. BUTTON & OUTPUT (Encouraging Action & Clear Results) --- */
+#calculate-btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#calculate-btn:hover {
+    background-color: #6d330c;
+    transform: translateY(-2px);
+}
+
+#profit-output {
+    font-size: 1.4em;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 25px;
+    border: 2px solid #ccc;
+    transition: all 0.5s ease;
+    min-height: 50px; /* Gives space for the message */
+}
+
+/* Styles applied by JS based on profit/loss */
+.profit-result {
+    background-color: var(--color-success);
+    color: white;
+    border-color: var(--color-success);
+}
+
+.loss-result {
+    background-color: var(--color-danger);
+    color: white;
+    border-color: var(--color-danger);
+}
