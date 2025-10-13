@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const finalProfit = totalRevenue - totalCosts;
 
         // --- C. DISPLAY RESULTS (Human-centered feedback) ---
+        // Format the number to two decimal places
         const formattedProfit = Math.abs(finalProfit).toFixed(2);
         
         // Remove old style classes before adding the new one
@@ -31,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let message = '';
         
         if (finalProfit >= 0) {
-            // Success: Profit is $0 or more
-            message = `🎉 **BREW-TIFUL!** Your event is estimated to make $${finalProfit.toFixed(2)}. This looks like a smart move.`;
+            // Success: Profit is €0 or more
+            message = `🎉 **BREW-TIFUL!** Your event is estimated to make €${finalProfit.toFixed(2)}. This looks like a smart move.`;
             profitOutput.classList.add('profit-result');
         } else {
-            // Loss: Profit is less than $0
-            message = `🔴 **COLD BREW DISASTER.** Your forecast shows a loss of $${formattedProfit}. Let's rethink your costs or expected attendance.`;
+            // Loss: Profit is less than €0
+            message = `🔴 **COLD BREW DISASTER.** Your forecast shows a loss of €${formattedProfit}. Let's rethink your costs or expected attendance.`;
             profitOutput.classList.add('loss-result');
         }
 
