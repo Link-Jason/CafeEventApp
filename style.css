@@ -89,11 +89,13 @@ fieldset .input-group-container:last-of-type {
     border-bottom: none; 
 }
 
+/* FIX: Microcopy spacing adjusted to prevent overlap */
 .microcopy {
     font-size: 0.85em;
     color: #888;
     margin: -8px 0 10px 0; 
     padding-left: 10px;
+    padding-right: 120px; /* Reserves space next to the input box */
     font-style: italic;
 }
 
@@ -104,12 +106,14 @@ fieldset .input-group-container:last-of-type {
 }
 
 label {
-    flex-basis: 75%;
+    /* FIX: Reduced label width to prevent overflow onto input box */
+    flex-basis: 65%; /* WAS 75% */
     font-weight: 500;
 }
 
 input[type="number"], input[type="text"] {
-    width: 100px; 
+    /* FIX: Slightly wider input box for a better feel */
+    width: 110px; /* WAS 100px */ 
     padding: 8px;
     border: 1px solid var(--color-secondary);
     border-radius: 4px;
