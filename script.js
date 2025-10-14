@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const profitForm = document.getElementById('profit-form');
     const profitOutput = document.getElementById('profit-output');
     const breakEvenOutput = document.getElementById('break-even-output');
-    // GET THE NEW METER ELEMENT
     const meterFill = document.getElementById('meter-fill'); 
     
     // 2. Attach ONE event listener to the entire form (listens for ANY input change)
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const ticketPrice = parseFloat(document.getElementById('ticket-price').value) || 0;
         const extraSpend = parseFloat(document.getElementById('extra-spend').value) || 0;
         
-        // LOST SALES INPUT ADDED HERE
         const lostSales = parseFloat(document.getElementById('lost-sales').value) || 0; 
         
         const staffWages = parseFloat(document.getElementById('staff-wages').value) || 0;
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- B. PERFORM CALCULATIONS ---
         const revenuePerGuest = ticketPrice + extraSpend;
-        // LOST SALES ADDED TO TOTAL FIXED COSTS HERE
         const totalFixedCosts = lostSales + staffWages + materialsCost + rentalCost;
         
         const totalRevenue = guests * revenuePerGuest;
@@ -86,4 +83,29 @@ document.addEventListener('DOMContentLoaded', () => {
         meterFill.style.height = `${fillHeight}%`;
         meterFill.style.backgroundColor = fillColor;
     }
+    
+    // --- VIBE BUTTONS LOGIC ---
+    const vibeButtons = document.querySelectorAll('.vibe-btn');
+    const customVibeContainer = document.getElementById('custom-vibe-container');
+    const eventNameInput = document.getElementById('event-name');
+
+    vibeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'active' class from all buttons
+            vibeButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Set 'active' class on the clicked button
+            button.classList.add('active');
+            
+            // Check if 'Other' button was clicked
+            if (button.dataset.vibe === 'Other') {
+                customVibeContainer.classList.remove('hidden');
+                eventNameInput.focus(); // Focus on the new input field
+            } else {
+                customVibeContainer.classList.add('hidden');
+                // Clear the custom input if a standard vibe is selected
+                eventNameInput.value = '';
+            }
+        });
+    });
 });

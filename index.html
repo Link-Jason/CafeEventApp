@@ -18,11 +18,18 @@
         <div id="calculator-section">
             <h2>1. Tell Us About Your Event</h2>
             
-            <div class="input-group wide-input">
-                <label for="event-name">Event Name or Vibe (Optional):</label>
-                <input type="text" id="event-name" placeholder="E.g., Trivia Night or Latte Art Class">
+            <h3 class="vibe-heading">What's the vibe of your event?</h3>
+            <div id="vibe-buttons">
+                <button type="button" data-vibe="Live Music" class="vibe-btn">🎤 Live Music Night</button>
+                <button type="button" data-vibe="Trivia" class="vibe-btn">🎲 Trivia Night</button>
+                <button type="button" data-vibe="Workshop" class="vibe-btn">🧁 Workshop/Tasting</button>
+                <button type="button" data-vibe="Other" class="vibe-btn other-btn">💡 Other</button>
             </div>
-
+            
+            <div class="input-group wide-input hidden" id="custom-vibe-container">
+                <label for="event-name">Custom Event Vibe:</label>
+                <input type="text" id="event-name" placeholder="E.g., Chess Tournament or Poetry Slam">
+            </div>
             <form id="profit-form">
                 
                 <fieldset>
@@ -79,7 +86,8 @@
                 </div>
                 <p class="meter-label">Profit/Loss Visual</p>
             </div>
-            </div>
+            
+        </div>
     </main>
     
     <script src="script.js"></script>

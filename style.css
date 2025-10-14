@@ -103,15 +103,15 @@ input[type="number"]:focus, input[type="text"]:focus {
     outline: none;
 }
 
-/* Fix for the Event Name input (wide-input) */
+/* Styling for the hidden 'Other' text input when visible */
 .wide-input {
     width: 100%; 
     padding: 10px 0;
-    display: block; /* Ensure full width layout */
+    display: block; 
 }
 
 .wide-input label {
-    display: block; /* Stack label above input */
+    display: block; 
     margin-bottom: 5px;
     text-align: left;
     flex-basis: 100%;
@@ -119,8 +119,8 @@ input[type="number"]:focus, input[type="text"]:focus {
 
 .wide-input input[type="text"] {
     width: 100%;
-    text-align: left; /* Text should align left here */
-    box-sizing: border-box; /* Include padding/border in element's total width/height */
+    text-align: left; 
+    box-sizing: border-box; 
 }
 
 
@@ -188,4 +188,46 @@ input[type="number"]:focus, input[type="text"]:focus {
 .meter-label {
     font-size: 0.9em;
     color: #666;
+}
+
+/* --- 6. VIBE BUTTONS STYLES --- */
+.vibe-heading {
+    font-size: 1.1em;
+    color: var(--color-primary);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#vibe-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.vibe-btn {
+    background-color: #f0f0f0; /* Light gray unselected */
+    color: var(--color-text);
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s;
+}
+
+.vibe-btn:hover {
+    border-color: var(--color-secondary);
+}
+
+.vibe-btn.active {
+    background-color: var(--color-secondary); /* Creamy color when selected */
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    font-weight: bold;
+}
+
+/* Utility class to hide elements */
+.hidden {
+    display: none !important;
 }
