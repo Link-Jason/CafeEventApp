@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const profitForm = document.getElementById('profit-form');
     const profitOutput = document.getElementById('profit-output');
     const breakEvenOutput = document.getElementById('break-even-output');
+    // GET THE NEW METER ELEMENT
+    const meterFill = document.getElementById('meter-fill'); 
     
     // 2. Attach ONE event listener to the entire form (listens for ANY input change)
-    // The 'input' event triggers the function every time a value is typed or changed.
     profitForm.addEventListener('input', calculateProfit);
     
     // Call calculation once on load to populate the break-even with defaults
@@ -16,13 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const guests = parseFloat(document.getElementById('guests').value) || 0;
         const ticketPrice = parseFloat(document.getElementById('ticket-price').value) || 0;
         const extraSpend = parseFloat(document.getElementById('extra-spend').value) || 0;
-        const lostSales = parseFloat(document.getElementById('lost-sales').value) || 0;  
+        
+        // LOST SALES INPUT ADDED HERE
+        const lostSales = parseFloat(document.getElementById('lost-sales').value) || 0; 
+        
         const staffWages = parseFloat(document.getElementById('staff-wages').value) || 0;
         const materialsCost = parseFloat(document.getElementById('materials-cost').value) || 0;
         const rentalCost = parseFloat(document.getElementById('rental-cost').value) || 0;
 
         // --- B. PERFORM CALCULATIONS ---
         const revenuePerGuest = ticketPrice + extraSpend;
+        // LOST SALES ADDED TO TOTAL FIXED COSTS HERE
         const totalFixedCosts = lostSales + staffWages + materialsCost + rentalCost;
         
         const totalRevenue = guests * revenuePerGuest;
@@ -34,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Formula: Fixed Costs / Revenue Per Guest
             breakEvenGuests = Math.ceil(totalFixedCosts / revenuePerGuest);
         } else if (totalFixedCosts > 0) {
-             // If costs exist but revenue per guest is zero (e.g., free event with no extra spend)
             breakEvenGuests = 'impossible to calculate.';
         }
         
@@ -62,5 +66,24 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             breakEvenOutput.innerHTML = `Break-even requires revenue per guest (€${revenuePerGuest.toFixed(2)}).`;
         }
+
+        // --- E. UPDATE VISUAL METER ---
+        const maxGoal = 500; // Define a realistic maximum profit goal for the meter's visual scale (e.g., €500)
+        let fillHeight = 0;
+        let fillColor = '';
+
+        if (finalProfit < 0) {
+            // Loss: Show meter at 0% and red/danger color
+            fillHeight = 0;
+            fillColor = 'var(--color-danger)';
+        } else if (finalProfit > 0) {
+            // Profit: Scale height up to maxGoal
+            fillHeight = Math.min((finalProfit / maxGoal) * 100, 100);
+            fillColor = (fillHeight >= 100) ? 'var(--color-success)' : 'var(--color-secondary)';
+        }
+        
+        // Apply the calculated height and color to the meter element
+        meterFill.style.height = `${fillHeight}%`;
+        meterFill.style.backgroundColor = fillColor;
     }
 });

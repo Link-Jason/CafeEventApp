@@ -88,7 +88,8 @@ label {
     font-weight: 500;
 }
 
-input[type="number"] {
+input[type="number"], input[type="text"] {
+    /* Apply styling to text input as well for uniformity */
     flex-basis: 20%;
     padding: 8px;
     border: 1px solid var(--color-secondary);
@@ -97,30 +98,33 @@ input[type="number"] {
     transition: border-color 0.3s;
 }
 
-input[type="number"]:focus {
+input[type="number"]:focus, input[type="text"]:focus {
     border-color: var(--color-primary);
     outline: none;
 }
 
-/* --- 4. BUTTON & OUTPUT (Encouraging Action & Clear Results) --- */
-#calculate-btn {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    margin-top: 20px;
+/* Fix for the Event Name input (wide-input) */
+.wide-input {
+    width: 100%; 
+    padding: 10px 0;
+    display: block; /* Ensure full width layout */
+}
+
+.wide-input label {
+    display: block; /* Stack label above input */
+    margin-bottom: 5px;
+    text-align: left;
+    flex-basis: 100%;
+}
+
+.wide-input input[type="text"] {
     width: 100%;
+    text-align: left; /* Text should align left here */
+    box-sizing: border-box; /* Include padding/border in element's total width/height */
 }
 
-#calculate-btn:hover {
-    background-color: #6d330c;
-    transform: translateY(-2px);
-}
 
+/* --- 4. OUTPUT STYLES (Clear Results & Status) --- */
 #profit-output {
     font-size: 1.4em;
     padding: 20px;
@@ -130,6 +134,14 @@ input[type="number"]:focus {
     border: 2px solid #ccc;
     transition: all 0.5s ease;
     min-height: 50px; /* Gives space for the message */
+}
+
+.result-metric {
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: -15px;
+    color: #555;
+    font-style: italic;
 }
 
 /* Styles applied by JS based on profit/loss */
@@ -145,28 +157,35 @@ input[type="number"]:focus {
     border-color: var(--color-danger);
 }
 
-/* --- Styles applied by JS based on profit/loss --- */
-.profit-result {
-    background-color: var(--color-success);
-    color: white;
-    border-color: var(--color-success);
+
+/* --- 5. VISUAL METER STYLES --- */
+#visual-meter {
+    text-align: center;
+    padding: 30px 0;
 }
 
-.loss-result {
-    background-color: var(--color-danger);
-    color: white;
-    border-color: var(--color-danger);
+.meter-base {
+    width: 80px;
+    height: 200px; /* Max height of the meter */
+    margin: 20px auto 10px;
+    border: 3px solid var(--color-primary); /* Coffee cup border */
+    border-radius: 10px;
+    background-color: #f7f3ed; /* Light interior */
+    display: flex;
+    align-items: flex-end; /* Ensures fill starts from the bottom */
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow for depth */
 }
 
-/* --- Styling for the single, wide input field (Event Name) --- */
-.wide-input {
-    /* Ensures the input group spans the full width of its container */
-    width: 100%; 
-    padding: 10px 0; /* Add a bit of vertical spacing */
-}
-
-.wide-input input {
-    /* Make the input field itself fill the space and look uniform */
+#meter-fill {
     width: 100%;
-    /* Keep the border, padding, and font styles consistent with other inputs */
+    height: 0%; /* Initial height is set to zero, JS will update this */
+    background-color: var(--color-secondary); /* Creamy/latte color */
+    transition: height 0.5s ease-out, background-color 0.5s ease-out;
+}
+
+.meter-label {
+    font-size: 0.9em;
+    color: #666;
 }
