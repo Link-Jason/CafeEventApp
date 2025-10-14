@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const guests = parseFloat(document.getElementById('guests').value) || 0;
         const ticketPrice = parseFloat(document.getElementById('ticket-price').value) || 0;
         const extraSpend = parseFloat(document.getElementById('extra-spend').value) || 0;
-        
+        const lostSales = parseFloat(document.getElementById('lost-sales').value) || 0;  
         const staffWages = parseFloat(document.getElementById('staff-wages').value) || 0;
         const materialsCost = parseFloat(document.getElementById('materials-cost').value) || 0;
         const rentalCost = parseFloat(document.getElementById('rental-cost').value) || 0;
 
         // --- B. PERFORM CALCULATIONS ---
         const revenuePerGuest = ticketPrice + extraSpend;
-        const totalFixedCosts = staffWages + materialsCost + rentalCost;
+        const totalFixedCosts = lostSales + staffWages + materialsCost + rentalCost;
         
         const totalRevenue = guests * revenuePerGuest;
         const finalProfit = totalRevenue - totalFixedCosts;
