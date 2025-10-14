@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const breakEvenOutput = document.getElementById('break-even-output');
     const meterFill = document.getElementById('meter-fill'); 
     
+    // NEW: Get the summary output elements
+    const revenueSummary = document.getElementById('revenue-summary');
+    const costsSummary = document.getElementById('costs-summary');
+    const profitSummary = document.getElementById('profit-summary');
+    
     // 2. Attach ONE event listener to the entire form (listens for ANY input change)
     profitForm.addEventListener('input', calculateProfit);
     
@@ -17,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ticketPrice = parseFloat(document.getElementById('ticket-price').value) || 0;
         const extraSpend = parseFloat(document.getElementById('extra-spend').value) || 0;
         
+        // Lost sales variable
         const lostSales = parseFloat(document.getElementById('lost-sales').value) || 0; 
         
         const staffWages = parseFloat(document.getElementById('staff-wages').value) || 0;
@@ -25,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- B. PERFORM CALCULATIONS ---
         const revenuePerGuest = ticketPrice + extraSpend;
+        // Lost Sales included in total fixed costs
         const totalFixedCosts = lostSales + staffWages + materialsCost + rentalCost;
         
         const totalRevenue = guests * revenuePerGuest;
@@ -64,7 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
             breakEvenOutput.innerHTML = `Break-even requires revenue per guest (€${revenuePerGuest.toFixed(2)}).`;
         }
 
-        // --- E. UPDATE VISUAL METER ---
+        // --- E. UPDATE CONSOLIDATED SUMMARY (NEW) ---
+        revenueSummary.innerHTML = `€${totalRevenue.toFixed(2)}`;
+        costsSummary.innerHTML = `€${totalFixedCosts.toFixed(2)}`;
+        profitSummary.innerHTML = `€${finalProfit.toFixed(2)}`;
+        
+        // Style the final profit line based on profit/loss status
+        if (finalProfit >= 0) {
+            profitSummary.style.color = 'var(--color-success)';
+        } else {
+            profitSummary.style.color = 'var(--color-danger)';
+        }
+
+
+        // --- F. UPDATE VISUAL METER ---
         const maxGoal = 500; // Define a realistic maximum profit goal for the meter's visual scale (e.g., €500)
         let fillHeight = 0;
         let fillColor = '';
