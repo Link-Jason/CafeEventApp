@@ -1,16 +1,21 @@
 /* --- 1. GLOBAL & FONT STYLES (Warm & Friendly Base) --- */
 :root {
-    --color-primary: #8B4513; /* Saddle Brown - Coffee color */
-    --color-secondary: #D2B48C; /* Tan - Creamy/latte color */
-    --color-background: #F5F5DC; /* Beige - Off-white paper look */
-    --color-success: #28a745; /* Dark Green - Clear Success */
-    --color-danger: #dc3545; /* Red - Clear Alert */
-    --color-text: #333;
-    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.15);
+    /* New Brand Identity */
+    --color-primary: #7B4B2A; /* Espresso Brown (Main) */
+    --color-secondary: #D4A373; /* Caramel (Accent/Buttons) */
+    --color-background: #F7E9D7; /* Cream (Light background) */
+    --color-text: #2E2E2E; /* Charcoal (Text) */
+    --color-success: #3C9A5F; /* Profit Green */
+    --color-danger: #D95F46; /* Brick Red */
+
+    /* New Styling Elements */
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius-xl: 1rem;
+    --border-radius-2xl: 1.5rem;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Readable font */
+    font-family: 'Inter', sans-serif; 
     background-color: var(--color-background);
     color: var(--color-text);
     margin: 0;
@@ -18,16 +23,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 0.3s; /* Smooth transitions */
 }
 
 header {
     text-align: center;
     margin-bottom: 30px;
+    color: var(--color-primary); 
 }
 
 h1 {
+    font-family: 'Playfair Display', serif; /* Heading font */
     color: var(--color-primary);
-    font-size: 2.5em;
+    font-size: 2.8em; /* Slightly larger heading */
     margin-bottom: 5px;
 }
 
@@ -35,13 +43,13 @@ h1 {
 #app-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px; 
     max-width: 1100px;
     width: 100%;
-    background-color: white;
+    background-color: white; 
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: var(--shadow-light);
+    border-radius: var(--border-radius-2xl); /* Softer corners */
+    box-shadow: var(--shadow-soft); /* Soft shadow */
 }
 
 #calculator-section, #results-section {
@@ -51,15 +59,16 @@ h1 {
 
 h2 {
     border-bottom: 2px solid var(--color-secondary);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 15px; 
+    margin-bottom: 25px;
     color: var(--color-primary);
+    font-size: 1.6em;
 }
 
 /* --- 3. FORM STYLES (User-Friendly Inputs) --- */
 fieldset {
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: var(--border-radius-xl);
     padding: 15px;
     margin-bottom: 20px;
 }
@@ -71,27 +80,23 @@ legend {
     font-size: 1.1em;
 }
 
-/* Container for label/input + microcopy */
 .input-group-container {
     padding: 5px 0;
-    border-bottom: 1px dotted #eee; /* This now manages the separator line */
+    border-bottom: 1px dotted #eee; 
 }
 
-/* Ensures the last item in a fieldset has no border */
 fieldset .input-group-container:last-of-type {
     border-bottom: none; 
 }
 
-/* Style for the helpful hint text */
 .microcopy {
     font-size: 0.85em;
     color: #888;
-    margin: -8px 0 10px 0; /* Adjust spacing to pull it closer to the input line */
+    margin: -8px 0 10px 0; 
     padding-left: 10px;
     font-style: italic;
 }
 
-/* The actual label/input row */
 .input-group {
     display: flex;
     justify-content: space-between;
@@ -104,7 +109,6 @@ label {
 }
 
 input[type="number"], input[type="text"] {
-    /* FIX: Set a fixed width to prevent inputs from being squeezed by long labels */
     width: 100px; 
     padding: 8px;
     border: 1px solid var(--color-secondary);
@@ -118,7 +122,6 @@ input[type="number"]:focus, input[type="text"]:focus {
     outline: none;
 }
 
-/* Styling for the custom 'Other' text input when visible */
 .wide-input {
     width: 100%; 
     padding: 10px 0;
@@ -143,12 +146,13 @@ input[type="number"]:focus, input[type="text"]:focus {
 #profit-output {
     font-size: 1.4em;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-xl);
     text-align: center;
     margin-top: 25px;
     border: 2px solid #ccc;
     transition: all 0.5s ease;
-    min-height: 50px; /* Gives space for the message */
+    min-height: 50px; 
+    font-weight: bold;
 }
 
 .result-metric {
@@ -234,28 +238,31 @@ input[type="number"]:focus, input[type="text"]:focus {
 
 .vibe-btn:hover {
     border-color: var(--color-secondary);
+    transform: translateY(-1px);
 }
 
 .vibe-btn.active {
     background-color: var(--color-secondary); 
-    color: var(--color-primary);
+    color: white;
     border-color: var(--color-primary);
     font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* --- 7. CONSOLIDATED SUMMARY STYLES --- */
 #results-summary {
     margin-top: 30px;
-    padding: 15px;
+    padding: 20px;
     border: 1px solid var(--color-secondary);
-    border-radius: 8px;
+    border-radius: var(--border-radius-xl);
     background-color: #fcfcfc;
+    box-shadow: var(--shadow-soft);
 }
 
 .summary-line {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 10px 0;
     border-bottom: 1px dotted #eee;
 }
 
@@ -269,9 +276,10 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 .final-profit-line {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: bold;
     padding-top: 15px;
+    border-top: 2px solid var(--color-primary);
 }
 
 .summary-value {
@@ -281,4 +289,20 @@ input[type="number"]:focus, input[type="text"]:focus {
 /* Utility class to hide elements */
 .hidden {
     display: none !important;
+}
+
+/* --- 8. Media Queries for Responsiveness --- */
+@media (max-width: 768px) {
+    #app-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #calculator-section, #results-section {
+        min-width: 100%;
+    }
+
+    body {
+        padding: 15px;
+    }
 }
