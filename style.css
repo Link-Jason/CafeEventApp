@@ -95,7 +95,8 @@ fieldset .input-group-container:last-of-type {
     color: #888;
     margin: -8px 0 10px 0; 
     padding-left: 10px;
-    padding-right: 120px; /* Reserves space next to the input box */
+    /* INCREASE THIS VALUE */
+    padding-right: 180px; /* WAS 120px - Now reserves enough space */
     font-style: italic;
 }
 
