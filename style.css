@@ -71,16 +71,32 @@ legend {
     font-size: 1.1em;
 }
 
+/* New container for label/input + microcopy */
+.input-group-container {
+    padding: 5px 0;
+    border-bottom: 1px dotted #eee; /* This now manages the separator line */
+}
+
+/* Ensures the last item in a fieldset has no border */
+fieldset .input-group-container:last-of-type {
+    border-bottom: none; 
+}
+
+/* Style for the helpful hint text */
+.microcopy {
+    font-size: 0.85em;
+    color: #888;
+    margin: -8px 0 10px 0; /* Adjust spacing to pull it closer to the input line */
+    padding-left: 10px;
+    font-style: italic;
+}
+
+/* The actual label/input row */
 .input-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px dotted #eee;
-}
-
-.input-group:last-child {
-    border-bottom: none;
+    /* Removed border-bottom here */
 }
 
 label {
@@ -138,7 +154,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 .result-metric {
     font-size: 1.1em;
     text-align: center;
-    margin-top: 5px; /* Adjusted spacing */
+    margin-top: 5px; 
     margin-bottom: 10px;
     color: #555;
     font-style: italic;
