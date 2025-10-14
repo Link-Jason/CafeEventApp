@@ -144,3 +144,29 @@ input[type="number"]:focus {
     color: white;
     border-color: var(--color-danger);
 }
+
+/* --- Styles applied by JS based on profit/loss --- */
+.profit-result {
+    background-color: var(--color-success);
+    color: white;
+    border-color: var(--color-success);
+}
+
+.loss-result {
+    background-color: var(--color-danger);
+    color: white;
+    border-color: var(--color-danger);
+}
+
+/* --- Styling for the single, wide input field (Event Name) --- */
+.wide-input {
+    /* Ensures the input group spans the full width of its container */
+    width: 100%; 
+    padding: 10px 0; /* Add a bit of vertical spacing */
+}
+
+.wide-input input {
+    /* Make the input field itself fill the space and look uniform */
+    width: 100%;
+    /* Keep the border, padding, and font styles consistent with other inputs */
+}
