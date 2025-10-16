@@ -5,7 +5,11 @@ const breakEvenOutput = document.getElementById('break-even-output');
 const revenueSummary = document.getElementById('revenue-summary');
 const costsSummary = document.getElementById('costs-summary');
 const profitSummary = document.getElementById('profit-summary');
-const meterFill = document.getElementById('meter-fill');
+// REMOVED: const meterFill = document.getElementById('meter-fill');
+// NEW DIAL SELECTORS
+const dialPercentage = document.getElementById('dial-percentage');
+const dialFillSvg = document.getElementById('dial-fill-svg');
+// ... existing selectors ...
 const appContainer = document.getElementById('app-container');
 
 // --- 2. Calculation Logic ---
@@ -34,11 +38,16 @@ function calculateProfit() {
     // C. Calculate Net Profit
     const netProfit = totalRevenue - totalCosts;
 
-    // D. Update UI Elements
+    // D. Calculate Net Margin Percentage (New Calculation)
+    const netMargin = (totalRevenue > 0) 
+        ? (netProfit / totalRevenue) * 100 
+        : (netProfit > 0 ? 100 : 0); // Handle zero revenue case
+
+    // E. Update UI Elements
     updateProfitOutput(netProfit);
     updateSummary(totalRevenue, totalCosts, netProfit);
     updateBreakEven(totalFixedCosts, ticketPrice, extraSpend);
-    updateVisualMeter(netProfit);
+    updateProfitDial(netProfit, netMargin); // UPDATED to new dial function
 }
 
 /**
@@ -94,34 +103,44 @@ function updateBreakEven(fixedCosts, ticketPrice, extraSpend) {
     } else if (breakEvenGuests > 0) {
         breakEvenOutput.textContent = `You need ${breakEvenGuests} guests to break even.`;
     } else {
-         breakEvenOutput.textContent = `You need 0 guests to break even (costs are €0).`;
+        breakEvenOutput.textContent = `You need 0 guests to break even (costs are €0).`;
     }
 }
 
 /**
- * Updates the visual meter based on profitability.
+ * Updates the circular profit dial based on profit and margin. (REPLACEMENT FOR updateVisualMeter)
  * @param {number} profit - The calculated net profit.
+ * @param {number} margin - The calculated net margin percentage (e.g., 25 for 25%).
  */
-function updateVisualMeter(profit) {
-    // Define the range for the visual meter: e.g., max visual profit/loss is €500
-    const maxRange = 500; 
-    let percentage = 50; // Start in the middle (break-even)
-
-    if (profit > 0) {
-        // Profit: max 100% fill
-        percentage = 50 + Math.min(profit / maxRange, 1) * 50; 
-        meterFill.style.backgroundColor = 'var(--color-success)';
-    } else if (profit < 0) {
-        // Loss: min 0% fill
-        percentage = 50 - Math.min(Math.abs(profit) / maxRange, 1) * 50; 
-        meterFill.style.backgroundColor = 'var(--color-danger)';
-    } else {
-        // Break Even
-        percentage = 50;
-        meterFill.style.backgroundColor = 'var(--color-secondary)';
-    }
+function updateProfitDial(profit, margin) {
+    // Circumference of the circle (2 * pi * 45 ≈ 282.7)
+    const circumference = 283;
     
-    meterFill.style.height = `${percentage}%`;
+    // 1. Calculate the fill amount (0% to 100% of the circle)
+    // Clamp margin between -100% (max loss shown) and +100% (max profit shown).
+    const normalizedMargin = Math.min(Math.max(margin, -100), 100); 
+
+    // Convert the margin percentage to a dash offset for the SVG circle.
+    // Normalized range is -100 to 100. We map this to a 0 to 1 fill percentage.
+    const fillPercentage = (normalizedMargin + 100) / 200; // 0 to 1
+    const dashOffset = circumference * (1 - fillPercentage);
+
+    // 2. Apply the fill and color
+    dialFillSvg.style.strokeDasharray = circumference;
+    dialFillSvg.style.strokeDashoffset = dashOffset;
+    dialPercentage.textContent = `${Math.round(margin)}%`;
+    
+    let color;
+    if (profit > 0) {
+        color = 'var(--color-success)';
+    } else if (profit < 0) {
+        color = 'var(--color-danger)';
+    } else {
+        color = 'var(--color-secondary)';
+    }
+
+    dialFillSvg.style.stroke = color;
+    dialPercentage.style.color = color;
 }
 
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafe Event Profit Predictor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -108,15 +108,20 @@
         <div id="results-section">
             <h2>2. Profit Forecast</h2>
             <p id="profit-output">Enter your event numbers to see the forecast.</p>
-            <p id="break-even-output" class="result-metric">You need 0 guests to break even.</p>
             
             <div id="visual-meter">
-                <div class="meter-base">
-                    <div id="meter-fill" class="meter-fill"></div>
+                <div id="profit-dial-container" class="dial-container">
+                    <div id="dial-content">
+                        <p id="dial-percentage">0%</p>
+                        <p class="dial-label">Net Margin</p>
+                    </div>
+                    <svg id="dial-svg" viewBox="0 0 100 100">
+                        <circle class="dial-track" cx="50" cy="50" r="45"></circle>
+                        <circle class="dial-fill" id="dial-fill-svg" cx="50" cy="50" r="45"></circle>
+                    </svg>
                 </div>
-                <p class="meter-label">Profit/Loss Visual</p>
+                <p id="break-even-output" class="result-metric">You need 0 guests to break even.</p>
             </div>
-            
             <div id="results-summary">
                 <div class="summary-line">
                     <span class="summary-label">⬆️ Total Revenue:</span>
