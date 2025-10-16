@@ -46,12 +46,15 @@ h1 {
     gap: 40px; 
     max-width: 1100px;
     width: 100%;
-    /* START: GLASSY CARD EFFECT (Main Container) */
-    background-color: rgba(255, 255, 255, 0.9); 
+    
+    /* WOW! START: GLASSY CARD EFFECT (Main Container) */
+    background-color: rgba(255, 255, 255, 0.75); /* More transparent */
     padding: 40px;
     border-radius: var(--border-radius-2xl);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
-    /* END: GLASSY CARD EFFECT */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* For Safari support */
+    /* WOW! END: GLASSY CARD EFFECT (Main Container) */
 }
 
 #calculator-section, #results-section {
@@ -67,7 +70,7 @@ h2 {
     font-size: 1.6em;
 }
 
-/* --- 3. FORM STYLES (No changes here) --- */
+/* --- 3. FORM STYLES (User-Friendly Inputs) --- */
 fieldset {
     border: 1px solid #ddd;
     border-radius: var(--border-radius-xl);
@@ -145,7 +148,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 
-/* --- 4. OUTPUT STYLES (No changes needed here) --- */
+/* --- 4. OUTPUT STYLES (Clear Results & Status) --- */
 #profit-output {
     font-size: 1.4em;
     padding: 20px;
@@ -180,7 +183,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 
-/* --- 5. VISUAL METER STYLES (No changes needed here) --- */
+/* --- 5. VISUAL METER STYLES (Profit Dial) --- */
 #visual-meter {
     text-align: center;
     padding: 30px 0;
@@ -241,7 +244,7 @@ input[type="number"]:focus, input[type="text"]:focus {
     margin-top: 5px;
 }
 
-/* --- 6. VIBE BUTTONS STYLES (No changes needed here) --- */
+/* --- 6. VIBE BUTTONS STYLES --- */
 .vibe-heading {
     font-size: 1.1em;
     color: var(--color-primary);
@@ -284,12 +287,15 @@ input[type="number"]:focus, input[type="text"]:focus {
 #results-summary {
     margin-top: 30px;
     padding: 20px;
-    /* START: GLASSY CARD EFFECT (Summary Box) */
-    border: 1px solid rgba(212, 163, 115, 0.5); /* Lighter, semi-transparent border */
+    
+    /* WOW! START: GLASSY CARD EFFECT (Summary Box) */
+    border: 1px solid rgba(212, 163, 115, 0.5); 
     border-radius: var(--border-radius-xl);
-    background-color: rgba(255, 255, 255, 0.95); /* Nearly white background */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* More refined shadow */
-    /* END: GLASSY CARD EFFECT */
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px); /* For Safari support */
+    /* WOW! END: GLASSY CARD EFFECT (Summary Box) */
 }
 
 .summary-line {
@@ -323,7 +329,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 #insight-box {
     margin-top: 20px;
     padding: 15px;
-    background-color: var(--color-background); /* Creamy background */
+    background-color: var(--color-background);
     border: 1px dashed var(--color-secondary);
     border-radius: var(--border-radius-xl);
     text-align: center;
@@ -340,7 +346,7 @@ input[type="number"]:focus, input[type="text"]:focus {
     color: var(--color-text);
     margin: 0;
 }
-/* --- 9. Media Queries for Responsiveness (No changes needed here) --- */
+/* --- 9. Media Queries for Responsiveness --- */
 @media (max-width: 768px) {
     #app-container {
         flex-direction: column;
