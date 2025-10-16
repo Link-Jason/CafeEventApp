@@ -23,7 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.3s; /* Smooth transitions */
+    transition: all 0.3s;
 }
 
 header {
@@ -33,9 +33,9 @@ header {
 }
 
 h1 {
-    font-family: 'Playfair Display', serif; /* Heading font */
+    font-family: 'Playfair Display', serif;
     color: var(--color-primary);
-    font-size: 2.8em; /* Slightly larger heading */
+    font-size: 2.8em;
     margin-bottom: 5px;
 }
 
@@ -46,10 +46,12 @@ h1 {
     gap: 40px; 
     max-width: 1100px;
     width: 100%;
-    background-color: white; 
+    /* START: GLASSY CARD EFFECT (Main Container) */
+    background-color: rgba(255, 255, 255, 0.9); 
     padding: 40px;
-    border-radius: var(--border-radius-2xl); /* Softer corners */
-    box-shadow: var(--shadow-soft); /* Soft shadow */
+    border-radius: var(--border-radius-2xl);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    /* END: GLASSY CARD EFFECT */
 }
 
 #calculator-section, #results-section {
@@ -65,7 +67,7 @@ h2 {
     font-size: 1.6em;
 }
 
-/* --- 3. FORM STYLES (User-Friendly Inputs) --- */
+/* --- 3. FORM STYLES (No changes here) --- */
 fieldset {
     border: 1px solid #ddd;
     border-radius: var(--border-radius-xl);
@@ -89,14 +91,12 @@ fieldset .input-group-container:last-of-type {
     border-bottom: none; 
 }
 
-/* FIX: Microcopy spacing adjusted to prevent overlap */
 .microcopy {
     font-size: 0.85em;
     color: #888;
     margin: -8px 0 10px 0; 
     padding-left: 10px;
-    /* INCREASE THIS VALUE */
-    padding-right: 180px; /* WAS 120px - Now reserves enough space */
+    padding-right: 180px;
     font-style: italic;
 }
 
@@ -107,14 +107,12 @@ fieldset .input-group-container:last-of-type {
 }
 
 label {
-    /* FIX: Reduced label width to prevent overflow onto input box */
-    flex-basis: 65%; /* WAS 75% */
+    flex-basis: 65%;
     font-weight: 500;
 }
 
 input[type="number"], input[type="text"] {
-    /* FIX: Slightly wider input box for a better feel */
-    width: 110px; /* WAS 100px */ 
+    width: 110px;
     padding: 8px;
     border: 1px solid var(--color-secondary);
     border-radius: 4px;
@@ -147,7 +145,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 
-/* --- 4. OUTPUT STYLES (Clear Results & Status) --- */
+/* --- 4. OUTPUT STYLES (No changes needed here) --- */
 #profit-output {
     font-size: 1.4em;
     padding: 20px;
@@ -169,7 +167,6 @@ input[type="number"]:focus, input[type="text"]:focus {
     font-style: italic;
 }
 
-/* Styles applied by JS based on profit/loss */
 .profit-result {
     background-color: var(--color-success);
     color: white;
@@ -183,7 +180,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 
-/* --- 5. VISUAL METER STYLES (NEW PROFIT DIAL) --- */
+/* --- 5. VISUAL METER STYLES (No changes needed here) --- */
 #visual-meter {
     text-align: center;
     padding: 30px 0;
@@ -205,7 +202,7 @@ input[type="number"]:focus, input[type="text"]:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    transform: rotate(-90deg); /* Start the circle at the top */
+    transform: rotate(-90deg);
 }
 
 .dial-track {
@@ -217,7 +214,6 @@ input[type="number"]:focus, input[type="text"]:focus {
 .dial-fill {
     fill: none;
     stroke-width: 8;
-    /* Circumference is approx 283 for r=45 */
     stroke-dashoffset: 283; 
     transition: stroke-dashoffset 0.7s ease-out, stroke 0.7s;
     filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
@@ -234,7 +230,7 @@ input[type="number"]:focus, input[type="text"]:focus {
     font-size: 2.2em;
     font-family: 'Playfair Display', serif;
     font-weight: bold;
-    color: var(--color-primary); /* Initial color */
+    color: var(--color-primary);
     line-height: 1;
     transition: color 0.7s;
 }
@@ -242,13 +238,10 @@ input[type="number"]:focus, input[type="text"]:focus {
 .dial-label {
     font-size: 0.9em;
     color: #888;
-    margin-top: 5px; /* Adjusted spacing */
+    margin-top: 5px;
 }
 
-/* REMOVED OLD METER STYLES: .meter-base, #meter-fill, .meter-label */
-
-
-/* --- 6. VIBE BUTTONS STYLES --- */
+/* --- 6. VIBE BUTTONS STYLES (No changes needed here) --- */
 .vibe-heading {
     font-size: 1.1em;
     color: var(--color-primary);
@@ -287,14 +280,16 @@ input[type="number"]:focus, input[type="text"]:focus {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* --- 7. CONSOLIDATED SUMMARY STYLES --- */
+/* --- 7. CONSOLIDATED SUMMARY STYLES (Glassy Effect Added) --- */
 #results-summary {
     margin-top: 30px;
     padding: 20px;
-    border: 1px solid var(--color-secondary);
+    /* START: GLASSY CARD EFFECT (Summary Box) */
+    border: 1px solid rgba(212, 163, 115, 0.5); /* Lighter, semi-transparent border */
     border-radius: var(--border-radius-xl);
-    background-color: #fcfcfc;
-    box-shadow: var(--shadow-soft);
+    background-color: rgba(255, 255, 255, 0.95); /* Nearly white background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* More refined shadow */
+    /* END: GLASSY CARD EFFECT */
 }
 
 .summary-line {
@@ -324,12 +319,28 @@ input[type="number"]:focus, input[type="text"]:focus {
     font-weight: bold;
 }
 
-/* Utility class to hide elements */
-.hidden {
-    display: none !important;
+/* --- 8. NEW INSIGHT BOX STYLES --- */
+#insight-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--color-background); /* Creamy background */
+    border: 1px dashed var(--color-secondary);
+    border-radius: var(--border-radius-xl);
+    text-align: center;
 }
 
-/* --- 8. Media Queries for Responsiveness --- */
+#insight-box h3 {
+    color: var(--color-primary);
+    font-size: 1.1em;
+    margin: 0 0 5px 0;
+}
+
+#insight-message {
+    font-size: 0.95em;
+    color: var(--color-text);
+    margin: 0;
+}
+/* --- 9. Media Queries for Responsiveness (No changes needed here) --- */
 @media (max-width: 768px) {
     #app-container {
         flex-direction: column;
