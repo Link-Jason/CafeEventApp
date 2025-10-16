@@ -8,10 +8,34 @@ const profitSummary = document.getElementById('profit-summary');
 const dialPercentage = document.getElementById('dial-percentage');
 const dialFillSvg = document.getElementById('dial-fill-svg');
 const appContainer = document.getElementById('app-container');
-// NEW INSIGHT SELECTOR
 const insightMessage = document.getElementById('insight-message');
 
 // --- 2. Calculation Logic ---
+
+/**
+ * Resets all output elements to a default, clear state.
+ */
+function resetOutput() {
+    profitOutput.classList.remove('profit-result', 'loss-result');
+    profitOutput.textContent = `Enter your event numbers to see the forecast.`;
+    
+    revenueSummary.textContent = `€0.00`;
+    costsSummary.textContent = `€0.00`;
+    profitSummary.textContent = `€0.00`;
+    document.querySelector('.final-profit-line').style.color = 'var(--color-text)';
+    
+    breakEvenOutput.textContent = `You need 0 guests to break even.`;
+    
+    // Reset Dial
+    const circumference = 283;
+    dialFillSvg.style.strokeDashoffset = circumference;
+    dialFillSvg.style.stroke = 'var(--color-secondary)';
+    dialPercentage.textContent = `0%`;
+    dialPercentage.style.color = 'var(--color-primary)';
+    
+    insightMessage.textContent = "Adjust your inputs to see helpful tips here!";
+}
+
 
 /**
  * Calculates the total profit/loss and updates the UI.
@@ -25,6 +49,20 @@ function calculateProfit() {
     const staffWages = parseFloat(document.getElementById('staff-wages').value) || 0;
     const materialsCost = parseFloat(document.getElementById('materials-cost').value) || 0;
     const rentalCost = parseFloat(document.getElementById('rental-cost').value) || 0;
+
+    // WOW! START: INPUT VALIDATION & GUARD CLAUSE
+    // Check if Guests is missing or negative (HTML min="0" should prevent negative, but this catches empty input or non-numbers)
+    if (guests <= 0 || isNaN(guests)) {
+        resetOutput();
+        if (guests < 0) { // Specific feedback for negative input
+            profitOutput.textContent = "⚠️ Guests must be a positive number.";
+        } else { // Feedback for zero/empty input
+            profitOutput.textContent = "📝 Tip: Enter an expected guest count to begin the forecast.";
+        }
+        return; // Stop the calculation
+    }
+    // WOW! END: INPUT VALIDATION & GUARD CLAUSE
+
 
     // B. Calculate Revenue and Costs
     const totalTicketRevenue = guests * ticketPrice;
@@ -54,22 +92,19 @@ function calculateProfit() {
     updateSummary(totalRevenue, totalCosts, netProfit);
     updateBreakEven(totalFixedCosts, ticketPrice, extraSpend, breakEvenGuests);
     updateProfitDial(netProfit, netMargin);
-    updateInsights(guests, netProfit, netMargin, breakEvenGuests); // NEW FUNCTION CALL
+    updateInsights(guests, netProfit, netMargin, breakEvenGuests);
 }
 
 /**
  * Updates the main profit/loss message style with a friendlier tone.
- * @param {number} profit - The calculated net profit.
  */
 function updateProfitOutput(profit) {
     profitOutput.classList.remove('profit-result', 'loss-result');
 
     if (profit > 0) {
-        // Updated message: More conversational, less corporate
         profitOutput.textContent = `☕ Profit Forecast: You're brewing up a profit of €${profit.toFixed(2)}! Go for it.`;
         profitOutput.classList.add('profit-result');
     } else if (profit < 0) {
-        // Updated message: A helpful warning
         profitOutput.textContent = `🚩 Loss Projected: This event may cost you €${Math.abs(profit).toFixed(2)}. Time to adjust?`;
         profitOutput.classList.add('loss-result');
     } else {
@@ -79,7 +114,6 @@ function updateProfitOutput(profit) {
 
 /**
  * Updates the consolidated summary panel.
- * (No changes needed here, keeping for completeness)
  */
 function updateSummary(revenue, costs, profit) {
     revenueSummary.textContent = `€${revenue.toFixed(2)}`;
@@ -131,7 +165,7 @@ function updateProfitDial(profit, margin) {
 }
 
 /**
- * NEW: Displays contextual advice based on the calculated results.
+ * Displays contextual advice based on the calculated results.
  */
 function updateInsights(guests, profit, margin, breakEven) {
     let message = "Adjust your inputs to see helpful tips here!";
@@ -156,13 +190,22 @@ function updateInsights(guests, profit, margin, breakEven) {
 
 // --- 3. Input Listeners (Triggers Recalculation) ---
 function setupInputListeners() {
+    // Select all number inputs on the form
     const inputFields = profitForm.querySelectorAll('input[type="number"]');
     inputFields.forEach(input => {
+        // Add event listener to calculate profit on input change
         input.addEventListener('input', calculateProfit);
+        
+        // Add event listener to ensure no negative numbers are entered manually
+        input.addEventListener('change', function() {
+            if (this.value < 0) {
+                this.value = 0;
+            }
+        });
     });
 }
 
-// --- 4. VIBE BUTTON HANDLERS (No changes needed here) ---
+// --- 4. VIBE BUTTON HANDLERS ---
 function setupVibeButtons() {
     const vibeButtons = document.querySelectorAll('.vibe-btn');
     const customVibeContainer = document.getElementById('custom-vibe-container');
