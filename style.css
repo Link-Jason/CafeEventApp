@@ -1,22 +1,28 @@
 /* --- 1. GLOBAL & FONT STYLES (Warm & Friendly Base) --- */
 :root {
-    /* New Brand Identity */
-    --color-primary: #7B4B2A; /* Espresso Brown (Main) */
-    --color-secondary: #D4A373; /* Caramel (Accent/Buttons) */
-    --color-background: #F7E9D7; /* Cream (Light background) */
-    --color-text: #2E2E2E; /* Charcoal (Text) */
-    --color-success: #3C9A5F; /* Profit Green */
-    --color-danger: #D95F46; /* Brick Red */
+    /* Modern Sleek Brand Identity */
+    --color-primary: #1a1a1a; /* Deep Charcoal (Main) */
+    --color-secondary: #6366f1; /* Modern Indigo (Accent/Buttons) */
+    --color-background: #f8fafc; /* Cool White (Light background) */
+    --color-text: #334155; /* Slate Gray (Text) */
+    --color-success: #10b981; /* Modern Emerald */
+    --color-danger: #ef4444; /* Modern Red */
+    --color-accent: #8b5cf6; /* Purple accent */
+    --color-surface: #ffffff; /* Pure white surfaces */
 
-    /* New Styling Elements */
-    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Enhanced Styling Elements */
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+    --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
     --border-radius-xl: 1rem;
     --border-radius-2xl: 1.5rem;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-surface: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 body {
     font-family: 'Inter', sans-serif; 
-    background-color: var(--color-background);
+    background: var(--gradient-surface);
     color: var(--color-text);
     margin: 0;
     padding: 30px;
@@ -24,8 +30,12 @@ body {
     flex-direction: column;
     align-items: center;
     transition: all 0.3s;
-    /* NEW: Background Pattern to Activate Backdrop Filter */
-    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0d2bf' fill-opacity='0.4'%3E%3Cpath d='M0 37.5L37.5 0h2.5L2.5 40H0v-2.5zm2.5 2.5L40 2.5V0L0 40h2.5z'/%3E%3C/g%3E%3C/svg%3E");
+    /* Modern Geometric Background Pattern */
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: 100% 100%, 100% 100%, 60px 60px;
 }
 
 header {
@@ -48,15 +58,15 @@ h1 {
     gap: 40px; 
     max-width: 1100px;
     width: 100%;
-    /* START: GLASSY CARD EFFECT (Main Container) */
-    background-color: rgba(255, 255, 255, 0.75);
+    /* Enhanced Modern Glass Effect */
+    background: rgba(255, 255, 255, 0.9);
     padding: 40px;
     border-radius: var(--border-radius-2xl);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    /* END: GLASSY CARD EFFECT */
-    transition: all 0.3s; /* This was the generic transition present before the hover effects */
+    box-shadow: var(--shadow-strong);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
 #calculator-section, #results-section {
@@ -118,16 +128,20 @@ label {
 
 input[type="number"], input[type="text"] {
     width: 110px;
-    padding: 8px;
-    border: 1px solid var(--color-secondary);
-    border-radius: 4px;
+    padding: 10px 12px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 8px;
     text-align: right;
-    transition: border-color 0.3s;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 input[type="number"]:focus, input[type="text"]:focus {
-    border-color: var(--color-primary);
+    border-color: var(--color-secondary);
     outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    background: white;
 }
 
 .wide-input {
@@ -262,27 +276,33 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 .vibe-btn {
-    background-color: #f0f0f0; 
+    background: rgba(255, 255, 255, 0.8);
     color: var(--color-text);
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 20px;
+    padding: 10px 16px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 25px;
     cursor: pointer;
     font-size: 0.9em;
-    transition: all 0.2s;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .vibe-btn:hover {
     border-color: var(--color-secondary);
-    transform: translateY(-1px);
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
 }
 
 .vibe-btn.active {
-    background-color: var(--color-secondary); 
+    background: var(--gradient-primary);
     color: white;
-    border-color: var(--color-primary);
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-color: var(--color-secondary);
+    font-weight: 600;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-1px);
 }
 
 /* --- 7. CONSOLIDATED SUMMARY STYLES (Glassy Effect Added) --- */
@@ -290,16 +310,15 @@ input[type="number"]:focus, input[type="text"]:focus {
     margin-top: 30px;
     padding: 20px;
     
-    /* START: GLASSY CARD EFFECT (Summary Box) */
-    border: 1px solid rgba(212, 163, 115, 0.5); 
+    /* Modern Glass Effect for Summary */
+    border: 1px solid rgba(99, 102, 241, 0.2); 
     border-radius: var(--border-radius-xl);
-    background-color: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    /* END: GLASSY CARD EFFECT (Summary Box) */
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-medium); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     
-    transition: all 0.3s; /* This was the generic transition present before the hover effects */
+    transition: all 0.3s ease;
 }
 
 .summary-line {
@@ -332,11 +351,13 @@ input[type="number"]:focus, input[type="text"]:focus {
 /* --- 8. NEW INSIGHT BOX STYLES --- */
 #insight-box {
     margin-top: 20px;
-    padding: 15px;
-    background-color: var(--color-background);
-    border: 1px dashed var(--color-secondary);
+    padding: 20px;
+    background: rgba(99, 102, 241, 0.05);
+    border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: var(--border-radius-xl);
     text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 #insight-box h3 {
