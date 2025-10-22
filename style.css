@@ -139,6 +139,11 @@ label {
     font-weight: 500;
 }
 
+/* Prevent line breaks in the Sales Missed label */
+label[for="lost-sales"] {
+    white-space: nowrap;
+}
+
 input[type="number"], input[type="text"] {
     width: 110px;
     padding: 10px 12px;
