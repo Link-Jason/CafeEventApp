@@ -444,8 +444,7 @@ input[type="number"]:focus, input[type="text"]:focus {
     
     /* Mobile label adjustments */
     label {
-        flex-basis: 60%;
-        white-space: normal;
+        flex-basis: 65%;
         font-size: 0.9em;
         line-height: 1.3;
     }
@@ -461,6 +460,7 @@ input[type="number"]:focus, input[type="text"]:focus {
     /* Mobile microcopy adjustments */
     .microcopy {
         padding-right: 10px;
+        margin: 5px 0 10px 0;
     }
     
     /* Mobile button adjustments */
