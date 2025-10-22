@@ -1,14 +1,14 @@
 /* --- 1. GLOBAL & FONT STYLES (Warm & Friendly Base) --- */
 :root {
-    /* Modern Sleek Brand Identity */
-    --color-primary: #1a1a1a; /* Deep Charcoal (Main) */
-    --color-secondary: #1A2C3E; /* Deep Navy/Slate Blue (Structural) */
-    --color-background: #f8fafc; /* Cool White (Light background) */
-    --color-text: #334155; /* Slate Gray (Text) */
-    --color-success: #2F4F4F; /* Muted Forest Green (Success/Profit) */
+    /* Warm Café Theme Colors */
+    --color-primary: #204F48; /* Teal Primary */
+    --color-secondary: #C8A27E; /* Latte/Caramel Accent */
+    --color-background: #F7F6F3; /* Soft Warm Background */
+    --color-text: #1E1E1E; /* Dark Text */
+    --color-success: #204F48; /* Teal for Success/Profit */
     --color-danger: #ef4444; /* Modern Red */
-    --color-accent: #1A2C3E; /* Deep Navy accent */
-    --color-surface: #ffffff; /* Pure white surfaces */
+    --color-accent: #C8A27E; /* Latte accent */
+    --color-surface: #FFFFFF; /* Pure white surfaces */
 
     /* Enhanced Styling Elements */
     --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -16,13 +16,13 @@
     --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
     --border-radius-xl: 1rem;
     --border-radius-2xl: 1.5rem;
-    --gradient-primary: linear-gradient(135deg, #1A2C3E 0%, #2F4F4F 100%);
-    --gradient-surface: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --gradient-primary: linear-gradient(135deg, #204F48 0%, #C8A27E 100%);
+    --gradient-surface: linear-gradient(135deg, #F7F6F3 0%, #FFFFFF 100%);
 }
 
 body {
     font-family: 'Inter', sans-serif; 
-    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    background: var(--gradient-surface);
     color: var(--color-text);
     margin: 0;
     padding: 30px;
@@ -30,12 +30,12 @@ body {
     flex-direction: column;
     align-items: center;
     transition: all 0.3s;
-    /* Enhanced Contrasting Background Pattern */
+    /* Warm Café Background Pattern */
     background-image: 
-        radial-gradient(circle at 20% 20%, rgba(26, 44, 62, 0.15) 0%, transparent 60%),
-        radial-gradient(circle at 80% 80%, rgba(47, 79, 79, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 50% 50%, rgba(26, 44, 62, 0.05) 0%, transparent 70%),
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231A2C3E' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(circle at 20% 20%, rgba(32, 79, 72, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(200, 162, 126, 0.06) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(32, 79, 72, 0.03) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23204F48' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px;
 }
 
@@ -130,7 +130,7 @@ label {
 input[type="number"], input[type="text"] {
     width: 110px;
     padding: 10px 12px;
-    border: 1px solid rgba(26, 44, 62, 0.3);
+    border: 1px solid rgba(200, 162, 126, 0.4);
     border-radius: 8px;
     text-align: right;
     background: rgba(255, 255, 255, 0.9);
@@ -141,7 +141,7 @@ input[type="number"], input[type="text"] {
 input[type="number"]:focus, input[type="text"]:focus {
     border-color: var(--color-secondary);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(26, 44, 62, 0.1);
+    box-shadow: 0 0 0 3px rgba(200, 162, 126, 0.2);
     background: white;
 }
 
@@ -277,10 +277,10 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 .vibe-btn {
-    background: rgba(148, 163, 184, 0.3);
+    background: rgba(200, 162, 126, 0.15);
     color: var(--color-text);
     padding: 10px 16px;
-    border: 1px solid rgba(26, 44, 62, 0.2);
+    border: 1px solid rgba(200, 162, 126, 0.3);
     border-radius: 25px;
     cursor: pointer;
     font-size: 0.9em;
@@ -292,7 +292,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 
 .vibe-btn:hover {
     border-color: var(--color-secondary);
-    background: rgba(26, 44, 62, 0.1);
+    background: rgba(200, 162, 126, 0.25);
     transform: translateY(-2px);
     box-shadow: var(--shadow-soft);
 }
@@ -311,10 +311,10 @@ input[type="number"]:focus, input[type="text"]:focus {
     margin-top: 30px;
     padding: 20px;
     
-    /* Modern Glass Effect for Summary */
-    border: 1px solid rgba(26, 44, 62, 0.2); 
+    /* Warm Glass Effect for Summary */
+    border: 1px solid rgba(200, 162, 126, 0.3); 
     border-radius: var(--border-radius-xl);
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: var(--shadow-medium); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -353,13 +353,13 @@ input[type="number"]:focus, input[type="text"]:focus {
 #insight-box {
     margin-top: 20px;
     padding: 20px;
-    background: rgba(26, 44, 62, 0.08);
-    border: 1px solid rgba(26, 44, 62, 0.25);
+    background: rgba(200, 162, 126, 0.08);
+    border: 1px solid rgba(200, 162, 126, 0.3);
     border-radius: var(--border-radius-xl);
     text-align: center;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(26, 44, 62, 0.1);
+    box-shadow: 0 4px 12px rgba(200, 162, 126, 0.15);
 }
 
 #insight-box h3 {
@@ -379,8 +379,8 @@ input[type="number"]:focus, input[type="text"]:focus {
     display: none;
     margin-top: 15px;
     padding: 15px;
-    background: rgba(26, 44, 62, 0.05);
-    border: 1px solid rgba(26, 44, 62, 0.2);
+    background: rgba(200, 162, 126, 0.08);
+    border: 1px solid rgba(200, 162, 126, 0.3);
     border-radius: var(--border-radius-xl);
     transition: all 0.3s ease;
 }
