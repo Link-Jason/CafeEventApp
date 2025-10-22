@@ -243,10 +243,10 @@ function setupVibeButtons() {
             loadPreset(vibe); // Load the context-aware preset
 
             if (vibe === 'Other') {
-                customVibeContainer.classList.remove('hidden');
+                customVibeContainer.classList.add('show');
                 eventNameInput.focus();
             } else {
-                customVibeContainer.classList.add('hidden');
+                customVibeContainer.classList.remove('show');
             }
         });
     });
