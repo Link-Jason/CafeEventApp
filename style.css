@@ -9,6 +9,8 @@
     --color-danger: #ef4444; /* Modern Red */
     --color-accent: #C8A27E; /* Latte accent */
     --color-surface: #FFFFFF; /* Pure white surfaces */
+    --color-structural: #1A2C3E; /* Deep Navy/Slate Blue for structure */
+    --color-light-text: #FBF8F2; /* Light cream for contrast */
 
     /* Enhanced Styling Elements */
     --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -76,11 +78,21 @@ h1 {
 }
 
 h2 {
-    border-bottom: 2px solid var(--color-secondary);
+    border-bottom: 2px solid var(--color-structural);
     padding-bottom: 15px; 
     margin-bottom: 25px;
     color: var(--color-primary);
     font-size: 1.6em;
+}
+
+/* Style section numbers specifically */
+h2 {
+    position: relative;
+}
+
+h2::first-letter {
+    color: var(--color-structural);
+    font-weight: bold;
 }
 
 /* --- 3. FORM STYLES (User-Friendly Inputs) --- */
@@ -298,9 +310,9 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 
 .vibe-btn.active {
-    background: var(--gradient-primary);
-    color: white;
-    border-color: var(--color-secondary);
+    background: var(--color-structural);
+    color: var(--color-light-text);
+    border-color: var(--color-structural);
     font-weight: 600;
     box-shadow: var(--shadow-medium);
     transform: translateY(-1px);
