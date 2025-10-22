@@ -419,16 +419,113 @@ input[type="number"]:focus, input[type="text"]:focus {
 }
 /* --- 9. Media Queries for Responsiveness --- */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    font-size: 14px;
+    }
+    
     #app-container {
         flex-direction: column;
-        padding: 20px;
+        padding: 15px;
+        gap: 20px;
     }
 
     #calculator-section, #results-section {
         min-width: 100%;
     }
-
-    body {
+    
+    /* Mobile label fixes */
+    label {
+        flex-basis: 100%;
+        margin-bottom: 8px;
+        font-size: 0.9em;
+        line-height: 1.3;
+    }
+    
+    /* Prevent all labels from wrapping on mobile */
+    label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* Mobile input adjustments */
+    input[type="number"], input[type="text"] {
+        width: 100%;
+        max-width: 120px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    /* Mobile button adjustments */
+    .vibe-btn {
+        padding: 12px 16px;
+        font-size: 0.85em;
+        min-height: 44px; /* Touch-friendly */
+    }
+    
+    #vibe-buttons {
+        gap: 8px;
+    }
+    
+    /* Mobile headings */
+    h1 {
+        font-size: 2.2em;
+    }
+    
+    h2 {
+        font-size: 1.4em;
+        margin-bottom: 20px;
+    }
+    
+    /* Mobile dial adjustments */
+    .dial-container {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Mobile summary adjustments */
+    #results-summary {
         padding: 15px;
+    }
+    
+    .summary-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .summary-value {
+        font-size: 1.1em;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    #app-container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .vibe-btn {
+        padding: 10px 12px;
+        font-size: 0.8em;
+    }
+    
+    input[type="number"], input[type="text"] {
+        font-size: 16px;
+        padding: 12px 8px;
     }
 }
