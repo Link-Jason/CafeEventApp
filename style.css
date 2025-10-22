@@ -431,7 +431,8 @@ input[type="number"]:focus, input[type="text"]:focus {
     }
 
     #calculator-section, #results-section {
-        min-width: 100%;
+        min-width: unset; /* IMPORTANT: Allows it to shrink below 350px */
+        width: 100%; /* Ensure it spans the full container width */
     }
     
     /* Mobile form layout fixes */
@@ -440,6 +441,8 @@ input[type="number"]:focus, input[type="text"]:focus {
         justify-content: space-between;
         align-items: center;
         gap: 10px;
+        width: 100%;
+        max-width: 100%;
     }
     
     /* Mobile label adjustments */
