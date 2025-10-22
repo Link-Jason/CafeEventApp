@@ -1,3 +1,8 @@
+/* --- 0. GLOBAL BOX MODEL RESET --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* --- 1. GLOBAL & FONT STYLES (Warm & Friendly Base) --- */
 :root {
     /* Warm Café Theme Colors */
@@ -447,7 +452,7 @@ input[type="number"]:focus, input[type="text"]:focus {
     
     /* Mobile label adjustments */
     label {
-        flex-basis: 65%;
+        flex-basis: 75%;
         font-size: 0.9em;
         line-height: 1.3;
     }
