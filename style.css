@@ -440,44 +440,31 @@ input[type="number"]:focus, input[type="text"]:focus {
         width: 100%; /* Ensure it spans the full container width */
     }
     
-    /* Mobile form layout fixes */
+    /* Mobile form layout - simplified approach */
     .input-group {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
     
     /* Mobile label adjustments */
     label {
-        flex-basis: 80%;
+        width: 100%;
         font-size: 0.9em;
         line-height: 1.3;
     }
     
     /* Mobile input adjustments */
     input[type="number"], input[type="text"] {
-        flex-shrink: 0;
-        width: 100px;
-        max-width: 100px;
+        width: 100%;
+        max-width: 200px;
         font-size: 16px; /* Prevents zoom on iOS */
     }
     
     /* Mobile microcopy adjustments */
     .microcopy {
-        padding-right: 10px;
+        padding-right: 0;
         margin: 5px 0 10px 0;
-    }
-    
-    /* Extra space for Event Costs section with longer labels */
-    fieldset:last-of-type .input-group {
-        gap: 15px;
-    }
-    
-    fieldset:last-of-type label {
-        flex-basis: 85%;
     }
     
     /* Mobile button adjustments */
