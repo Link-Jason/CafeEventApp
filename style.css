@@ -435,9 +435,12 @@ input[type="number"]:focus, input[type="text"]:focus {
         padding: 15px;
         gap: 20px;
         width: 100% !important;
-        max-width: none !important;
-        margin: 0;
+        max-width: 100% !important;
+        margin: 0 !important;
         box-sizing: border-box;
+        position: relative;
+        left: 0;
+        right: 0;
     }
 
     #calculator-section, #results-section {
