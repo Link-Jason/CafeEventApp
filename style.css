@@ -496,6 +496,11 @@ input[type="number"]:focus, input[type="text"]:focus {
         height: 150px;
     }
     
+    .dial-label {
+        margin-top: 8px;
+        font-size: 0.8em;
+    }
+    
     /* Mobile summary adjustments */
     #results-summary {
         padding: 15px;
